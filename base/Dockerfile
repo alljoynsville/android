@@ -18,3 +18,5 @@ RUN echo y | \
 RUN echo y | \
 	android update sdk --no-ui --filter 1,2
 
+WORKDIR  /root/
+
