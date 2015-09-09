@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-MAINTAINER CloudOfThings
+MAINTAINER alljoynsville
 
 RUN apt-get update && \
 	apt-get -y install openjdk-7-jdk libswt-gtk-3-java lib32z1 lib32ncurses5 lib32stdc++6 ant wget vim less && \
