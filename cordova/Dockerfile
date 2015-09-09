@@ -7,5 +7,7 @@ RUN nodeVersion=node-v4.0.0-linux-x64 && \
     ln -s /usr/local/$nodeVersion/bin/node /usr/bin/node && \
     ln -s /usr/local/$nodeVersion/bin/npm /usr/bin/npm
 
-RUN npm install -g cordova && ln -s /usr/local/$nodeVersion/lib/node_modules/cordova/bin/cordova /usr/bin/cordova
+RUN nodeVersion=node-v4.0.0-linux-x64 && \
+    npm install -g cordova && \
+    ln -s /usr/local/$nodeVersion/lib/node_modules/cordova/bin/cordova /usr/bin/cordova
 
