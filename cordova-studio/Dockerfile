@@ -1,4 +1,4 @@
-FROM alljoynsville/cordova
+FROM alljoynsville/android-cordova
 
 MAINTAINER alljoynsville
 
