@@ -2,7 +2,7 @@ FROM alljoynsville/android
 
 MAINTAINER alljoynsville
 
-RUN nodeVersion=node-v4.0.0-linux-x64 && \
+RUN nodeVersion=node-v5.1.0-linux-x64 && \
     wget -qO- https://nodejs.org/dist/latest/$nodeVersion.tar.gz | tar -zx -C /usr/local/ && \
     ln -s /usr/local/$nodeVersion/bin/node /usr/bin/node && \
     ln -s /usr/local/$nodeVersion/bin/npm /usr/bin/npm
