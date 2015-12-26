@@ -13,9 +13,8 @@ ENV ANDROID_HOME /usr/local/android-sdk-linux
 ENV PATH ${JAVA_HOME}/bin:${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 RUN echo y | \
-    android update sdk --no-ui --all --filter platform-tools,android-16,android-19,android-22 --force
-RUN echo y | \
-	android update sdk --no-ui --filter 1,2
+    android update sdk --no-ui --all --filter platform,tool,platform-tool --force
 
 WORKDIR  /root/
 
+VOLUME /usr/local/android-sdk-linux
