@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:trusty
 
 MAINTAINER alljoynsville
 
