@@ -18,6 +18,9 @@ RUN echo y | \
 RUN echo y | \
     android update sdk --no-ui --filter platform,tool,platform-tool --force
 
+RUN echo y | \
+    android update sdk --no-ui --filter 1    
+
 WORKDIR  /root/
 
 VOLUME /usr/local/android-sdk-linux
