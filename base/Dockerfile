@@ -2,8 +2,8 @@ FROM ubuntu:trusty
 
 MAINTAINER alljoynsville
 
-RUN apt-get update && \
-	apt-get -yq install openjdk-7-jdk libswt-gtk-3-java lib32z1 lib32ncurses5 lib32stdc++6 ant wget vim less && \
+RUN apt-get -q update && \
+	apt-get -yqq install openjdk-7-jdk libswt-gtk-3-java lib32z1 lib32ncurses5 lib32stdc++6 ant wget vim less && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -12,17 +12,11 @@ RUN wget -qO- "http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz" | tar
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 ENV PATH ${JAVA_HOME}/bin:${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
-RUN cd && cd /usr/local/android-sdk-linux && \
-    echo y | \
-    /usr/local/android-sdk-linux/tools/android update sdk --no-ui --filter platform,tool,platform-tool --force
+RUN (while :; do echo 'y'; sleep 3; done) | android update sdk --no-ui --silent --filter platform,tool,platform-tool --force
 
-RUN cd && cd /usr/local/android-sdk-linux && \
-    echo y | \
-    /usr/local/android-sdk-linux/tools/android update sdk --no-ui --filter platform,tool,platform-tool --force
+RUN (while :; do echo 'y'; sleep 3; done) | android update sdk --no-ui --silent --filter platform,tool,platform-tool --force
 
-RUN cd && cd /usr/local/android-sdk-linux && \
-    echo y | \
-    /usr/local/android-sdk-linux/tools/android update sdk --no-ui --filter 1    
+RUN (while :; do echo 'y'; sleep 3; done) | android update sdk --no-ui --silent --filter 1    
 
 WORKDIR  /root/
 
