@@ -14,9 +14,9 @@ ENV PATH ${JAVA_HOME}/bin:${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform
 
 RUN (while :; do echo 'y'; sleep 3; done) | android update sdk --no-ui --filter platform,tool,platform-tool --force
 
-RUN (while :; do echo 'y'; sleep 3; done) | android update sdk --no-ui --filter platform,tool,platform-tool --force
+#RUN (while :; do echo 'y'; sleep 3; done) | android update sdk --no-ui --filter platform,tool,platform-tool --force
 
-RUN (while :; do echo 'y'; sleep 3; done) | android update sdk --no-ui --filter 1    
+#RUN (while :; do echo 'y'; sleep 3; done) | android update sdk --no-ui --filter 1    
 
 
 WORKDIR  /root/
