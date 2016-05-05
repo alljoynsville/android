@@ -1,4 +1,4 @@
-FROM alljoynsville/android
+FROM alljoynsville/android-base
 
 MAINTAINER alljoynsville
 
