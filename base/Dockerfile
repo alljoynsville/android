@@ -35,9 +35,14 @@ ENV PATH ${JAVA_HOME}/bin:${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform
 #install ndk , cmake, built-tools, android image and maven repo
 RUN mkdir "$ANDROID_HOME/licenses" && \
 	echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-RUN sdkmanager "build-tools;25.0.2" "cmake;3.6.3155560" "extras;android;m2repository" \
-	"extras;google;m2repository" "lldb;2.3" "ndk-bundle" "platforms;android-23" \
+RUN sdkmanager --list 2>/dev/null|grep "build-tools"|tail -n -1|awk '{printf("export buildtools=#%s#\n",$1)}' >> /tmp/packages.android
+RUN sdkmanager --list 2>/dev/null|grep "cmake"|tail -n -1|awk '{printf("export cmake=#%s#\n",$1)}' >> /tmp/packages.android
+RUN sdkmanager --list 2>/dev/null|grep "lldb"|tail -n -1|awk '{printf("export lldb=#%s#\n",$1)}' >> /tmp/packages.android
+RUN cat /tmp/packages.android|tr '#' \' > /tmp/packages.android_ && mv /tmp/packages.android_ /tmp/packages.android
+RUN . /tmp/packages.android && sdkmanager "$buildtools" "$cmake" "extras;android;m2repository" \
+	"extras;google;m2repository" "$lldb" "ndk-bundle" "platforms;android-23" \
 	"platforms;android-24" "platforms;android-25"
+RUN rm /tmp/packages.android
 
 # Cleaning
 RUN apt-get clean
