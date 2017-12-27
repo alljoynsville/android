@@ -26,7 +26,7 @@ RUN dpkg --add-architecture i386 && apt-get update &&  \
 	libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1 python curl libswt-gtk-3-java libswt-gtk-3-jni 
 
 #install android base sdk (download and unzip)
-RUN wget -q https://dl.google.com/android/repository/tools_r25.2.3-linux.zip -O android_tools.zip && \
+RUN wget -q https://dl.google.com/android/repository/tools_r25.2.5-linux.zip -O android_tools.zip && \
 	unzip -qq -d /usr/local/android-sdk-linux android_tools.zip && rm android_tools.zip
 # setup ENV for android SDK
 ENV ANDROID_HOME /usr/local/android-sdk-linux
