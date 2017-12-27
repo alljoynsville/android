@@ -34,8 +34,9 @@ ENV PATH ${JAVA_HOME}/bin:${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform
 
 #install ndk , cmake, built-tools, android image and maven repo
 RUN mkdir "$ANDROID_HOME/licenses" && \
-	echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license" && \
-	echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+	echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" >  "$ANDROID_HOME/licenses/android-sdk-license" && \
+	echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license" && \
+	echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" >  "$ANDROID_HOME/licenses/android-sdk-preview-license"
 RUN sdkmanager --list 2>/dev/null|grep "build-tools"|tail -n -1|awk '{printf("export buildtools=#%s#\n",$1)}' >> /tmp/packages.android
 RUN sdkmanager --list 2>/dev/null|grep "cmake"|tail -n -1|awk '{printf("export cmake=#%s#\n",$1)}' >> /tmp/packages.android
 RUN sdkmanager --list 2>/dev/null|grep "lldb"|tail -n -1|awk '{printf("export lldb=#%s#\n",$1)}' >> /tmp/packages.android
